@@ -9,7 +9,6 @@ import java.io.PrintStream;
 
 @SpringBootApplication
 public class FacehumorApplication {
-
 	public static void main(String[] args) throws Exception {
 		SpringApplication.run(FacehumorApplication.class, args);
 //		String foto = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSuszKgEEzTdILZZWGz3ATx733Vde2AvLojrg&usqp=CAU";

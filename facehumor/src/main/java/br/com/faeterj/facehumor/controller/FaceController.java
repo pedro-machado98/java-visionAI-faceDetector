@@ -2,9 +2,10 @@ package br.com.faeterj.facehumor.controller;
 
 import br.com.faeterj.facehumor.entity.Face;
 import br.com.faeterj.facehumor.entity.FaceRepository;
-import br.com.faeterj.facehumor.entity.PhotoRegister;
+import br.com.faeterj.facehumor.entity.PhotoRegisterDTO;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,13 +20,20 @@ public class FaceController {
 
     @PostMapping
     @Transactional
-    public void cadastrar (@RequestBody @Valid PhotoRegister photoURL) throws Exception {
+    public ResponseEntity register (@RequestBody @Valid PhotoRegisterDTO photoURL) throws Exception {
         Face face = new Face();
-        repository.save(face.getDataFromPhoto(photoURL.photoURL()));
+        return ResponseEntity.ok(repository.save(face.getDataFromPhoto(photoURL.photoURL())));
     }
 
     @GetMapping
-    public List<Face> listar () {
-        return repository.findAll();
+    public ResponseEntity list () {
+        return ResponseEntity.ok(repository.findAll());
+    }
+
+    @DeleteMapping("/{id}")
+    @Transactional
+    public ResponseEntity delete (@PathVariable Long id){
+        repository.deleteById(id);
+        return ResponseEntity.ok().build();
     }
 }

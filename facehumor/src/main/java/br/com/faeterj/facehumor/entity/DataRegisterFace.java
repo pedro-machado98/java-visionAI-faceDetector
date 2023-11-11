@@ -7,7 +7,7 @@ import jakarta.validation.constraints.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DataRegisterFace(
-        String photoURL,
+        @JsonAlias("photoURL")Photo photoURL,
         @JsonAlias("joyLikelihood")String joy,
         @JsonAlias("angerLikelihood")String anger,
         @JsonAlias("surpriseLikelihood")String surprise,
@@ -15,7 +15,7 @@ public record DataRegisterFace(
         @JsonAlias("headwearLikelihood")String headwear
 ) {
 
-    public DataRegisterFace(FaceAnnotation annotation, String photoURL) {
+    public DataRegisterFace(FaceAnnotation annotation, Photo photoURL) {
         this(photoURL,
                 annotation.getJoyLikelihood().toString(),
                 annotation.getAngerLikelihood().toString(),
