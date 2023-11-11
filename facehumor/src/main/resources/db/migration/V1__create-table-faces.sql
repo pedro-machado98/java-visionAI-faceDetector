@@ -1,13 +1,9 @@
-create table faces(
-
-                        id bigint not null auto_increment,
-                        photoURL varchar(2000) not null,
-                        joy tinyint not null,
-                        anger tinyint not null,
-                        surprise tinyint not null,
-                        sorrow tinyint not null,
-                        headwear tinyint not null,
-
-                        primary key(id)
-
+CREATE TABLE faces (
+                       id BIGSERIAL PRIMARY KEY,
+                       photoURL VARCHAR(2000) NOT NULL,
+                       joy SMALLINT NOT NULL,
+                       anger SMALLINT NOT NULL,
+                       surprise SMALLINT NOT NULL,
+                       sorrow SMALLINT NOT NULL,
+                       headwear SMALLINT NOT NULL
 );
