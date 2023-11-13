@@ -1,0 +1,4 @@
+ALTER TABLE faces
+    ADD COLUMN name VARCHAR(255),
+    ADD COLUMN type VARCHAR(50),
+    ADD COLUMN face_img_data BYTEA;
