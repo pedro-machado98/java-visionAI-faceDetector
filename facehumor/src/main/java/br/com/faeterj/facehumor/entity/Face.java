@@ -6,7 +6,6 @@ import jakarta.persistence.*;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.Table;
-import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
@@ -22,6 +21,8 @@ public class Face {
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String photoURL;
+    @Embedded
+    private ImageDB faceImg;
     private Boolean joy;
     private Boolean anger;
     private Boolean surprise;
@@ -29,6 +30,7 @@ public class Face {
     private Boolean headwear;
 
     public Face(FaceAnnotation annotation, String photoURL) {
+        this.faceImg = null;
         this.photoURL = photoURL;
         this.joy = annotation.getJoyLikelihood().toString().equals("VERY_LIKELY");
         this.anger = annotation.getAngerLikelihood().toString().equals("VERY_LIKELY");
@@ -37,7 +39,21 @@ public class Face {
         this.headwear = annotation.getHeadwearLikelihood().toString().equals("VERY_LIKELY");
     }
 
-    public Face getDataFromPhoto(String photoURL) throws Exception {
+    public Face(FaceAnnotation annotation, ImageDB faceImg) {
+        this.photoURL = null;
+        this.faceImg = faceImg;
+        this.joy = annotation.getJoyLikelihood().toString().equals("VERY_LIKELY");
+        this.anger = annotation.getAngerLikelihood().toString().equals("VERY_LIKELY");
+        this.surprise = annotation.getSurpriseLikelihood().toString().equals("VERY_LIKELY");
+        this.sorrow = annotation.getSorrowLikelihood().toString().equals("VERY_LIKELY");
+        this.headwear = annotation.getHeadwearLikelihood().toString().equals("VERY_LIKELY");
+    }
+
+    public Face getDataFromPhotoByURL(String photoURL) throws Exception {
         return detectFaceAPI.detectFaceByURL(photoURL);
+    }
+
+    public Face getDataFromPhotoByIMG(ImageDB image) throws Exception {
+        return detectFaceAPI.detectFaceByIMG(image);
     }
 }
