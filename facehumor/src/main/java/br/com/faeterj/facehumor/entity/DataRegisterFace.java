@@ -3,7 +3,6 @@ package br.com.faeterj.facehumor.entity;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.cloud.vision.v1.FaceAnnotation;
-import jakarta.validation.constraints.*;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DataRegisterFace(

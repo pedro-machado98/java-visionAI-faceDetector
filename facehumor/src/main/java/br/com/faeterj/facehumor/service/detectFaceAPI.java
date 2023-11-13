@@ -16,9 +16,6 @@ public class detectFaceAPI {
         List<AnnotateImageRequest> requests = new ArrayList<>();
         Face face = null;
 
-//        ByteString imgBytes = ByteString.readFrom(new FileInputStream(filePath));
-//        Image img = Image.newBuilder().setContent(imgBytes).build();
-
         ImageSource imgSource = ImageSource.newBuilder().setImageUri(photoURL).build();
         Image img = Image.newBuilder().setSource(imgSource).build();
 

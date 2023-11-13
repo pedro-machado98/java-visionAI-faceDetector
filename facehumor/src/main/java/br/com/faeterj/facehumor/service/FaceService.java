@@ -4,16 +4,11 @@ import br.com.faeterj.facehumor.entity.Face;
 import br.com.faeterj.facehumor.entity.FaceRepository;
 import br.com.faeterj.facehumor.entity.ImageDB;
 import br.com.faeterj.facehumor.entity.PhotoRegisterDTO;
-import io.grpc.netty.shaded.io.netty.util.internal.StringUtil;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
-import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.multipart.MultipartFile;
 
-import java.io.IOException;
 import java.util.List;
 
 @Service
