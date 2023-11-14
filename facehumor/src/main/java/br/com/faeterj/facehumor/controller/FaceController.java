@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/faces")
+@CrossOrigin()
 public class FaceController {
 
     @Autowired
