@@ -15,8 +15,11 @@ import org.springframework.web.multipart.MultipartFile;
 @CrossOrigin()
 public class FaceController {
 
-    @Autowired
     private FaceService faceservice;
+
+    public FaceController (FaceService faceservice) {
+        this.faceservice = faceservice;
+    }
 
     @PostMapping("/url")
     @Transactional
