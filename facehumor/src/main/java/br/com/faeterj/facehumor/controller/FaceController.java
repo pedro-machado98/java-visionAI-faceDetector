@@ -12,7 +12,6 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/faces")
-@CrossOrigin(maxAge = 500)
 public class FaceController {
 
     @Autowired
