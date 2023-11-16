@@ -35,6 +35,8 @@ public class FaceController {
         System.out.println("Content type: "+file.getContentType());
         System.out.println("Bytes length: "+file.getSize());
         System.out.println("Resource multipart: "+file.getResource());
+        System.out.println("toString: " + file.toString());
+        System.out.println("Classe: " + file.getClass());
         return ResponseEntity.ok(faceservice.registerImage(file));
     }
     @GetMapping
