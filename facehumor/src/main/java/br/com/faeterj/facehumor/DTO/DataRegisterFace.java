@@ -1,12 +1,13 @@
-package br.com.faeterj.facehumor.entity;
+package br.com.faeterj.facehumor.DTO;
 
+import br.com.faeterj.facehumor.entity.Photo;
 import com.fasterxml.jackson.annotation.JsonAlias;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.google.cloud.vision.v1.FaceAnnotation;
 
 @JsonIgnoreProperties(ignoreUnknown = true)
 public record DataRegisterFace(
-        @JsonAlias("photoURL")Photo photoURL,
+        @JsonAlias("photoURL") Photo photoURL,
         @JsonAlias("joyLikelihood")String joy,
         @JsonAlias("angerLikelihood")String anger,
         @JsonAlias("surpriseLikelihood")String surprise,

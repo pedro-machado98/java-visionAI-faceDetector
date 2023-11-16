@@ -1,9 +1,9 @@
 package br.com.faeterj.facehumor.controller;
 
-import br.com.faeterj.facehumor.entity.PhotoRegisterDTO;
+import br.com.faeterj.facehumor.DTO.FaceRegisterByIMGDTO;
+import br.com.faeterj.facehumor.DTO.FaceRegisterByURLDTO;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -23,12 +23,12 @@ public class FaceController {
 
     @PostMapping("/url")
     @Transactional
-    public ResponseEntity registerByURL (@RequestBody @Valid PhotoRegisterDTO photoURL) throws Exception {
+    public ResponseEntity registerByURL (@RequestBody @Valid FaceRegisterByURLDTO photoURL) throws Exception {
         return ResponseEntity.ok(faceservice.registerURL(photoURL));
     }
     @PostMapping("/img")
     @Transactional
-    public ResponseEntity registerByIMG (@RequestParam("file") MultipartFile file) throws Exception {
+    public ResponseEntity registerByIMG (@ModelAttribute("file") FaceRegisterByIMGDTO file) throws Exception {
         return ResponseEntity.ok(faceservice.registerImage(file));
     }
     @GetMapping
