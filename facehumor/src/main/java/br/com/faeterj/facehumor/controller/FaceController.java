@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/faces")
-@CrossOrigin(maxAge = 3600)
+@CrossOrigin(maxAge = 500)
 public class FaceController {
 
     @Autowired
@@ -47,6 +47,13 @@ public class FaceController {
     @Transactional
     public ResponseEntity delete (@PathVariable Long id){
         faceservice.deleteFace(id);
+        return ResponseEntity.ok().build();
+    }
+
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity delete () {
+        faceservice.deleteAllFaces();
         return ResponseEntity.ok().build();
     }
 }

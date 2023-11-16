@@ -36,4 +36,8 @@ public class FaceService {
         faceRepository.deleteById(id);
     }
 
+    public void deleteAllFaces() {
+        faceRepository.deleteAll();
+    }
+
 }
