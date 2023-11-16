@@ -12,7 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 @RestController
 @RequestMapping("/faces")
-@CrossOrigin()
+@CrossOrigin(maxAge = 3600)
 public class FaceController {
 
     @Autowired
@@ -24,6 +24,7 @@ public class FaceController {
         return ResponseEntity.ok(faceservice.registerURL(photoURL));
     }
     @PostMapping("/img")
+    @CrossOrigin()
     @Transactional
     public ResponseEntity registerByIMG (@RequestParam("file") MultipartFile file) throws Exception {
         return ResponseEntity.ok(faceservice.registerImage(file));
