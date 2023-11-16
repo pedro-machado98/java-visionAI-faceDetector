@@ -19,7 +19,7 @@ public class FaceService {
     private FaceRepository faceRepository;
     Face face = new Face();
 
-    public Face registerImage (FaceRegisterByIMGDTO file) throws Exception {
+    public Face registerImage (MultipartFile file) throws Exception {
 
 
 //        String fileName = StringUtils.cleanPath(file.getOriginalFilename());

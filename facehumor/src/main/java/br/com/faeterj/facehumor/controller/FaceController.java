@@ -28,7 +28,15 @@ public class FaceController {
     }
     @PostMapping("/img")
     @Transactional
-    public ResponseEntity registerByIMG (@ModelAttribute("file") FaceRegisterByIMGDTO file) throws Exception {
+    public ResponseEntity registerByIMG (@ModelAttribute("file") MultipartFile file) throws Exception {
+        if(file.isEmpty()){
+            System.out.println("------------------------ARQUIVO ESTÁ VAZIO!! --------------------------------------");
+        }
+        System.out.println("Key name: "+file.getName());
+        System.out.println("File name: "+file.getOriginalFilename());
+        System.out.println("Content type: "+file.getContentType());
+        System.out.println("Bytes length: "+file.getSize());
+        System.out.println("Resource multipart: "+file.getResource());
         return ResponseEntity.ok(faceservice.registerImage(file));
     }
     @GetMapping

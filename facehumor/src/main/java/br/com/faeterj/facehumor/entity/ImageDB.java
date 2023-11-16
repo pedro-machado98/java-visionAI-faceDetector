@@ -26,4 +26,10 @@ public class ImageDB {
         this.name = StringUtils.cleanPath(file.img().getOriginalFilename());
         this.type = file.img().getContentType();
     }
+
+    public ImageDB(MultipartFile file) throws IOException {
+        this.face_img_data = file.getBytes();
+        this.name = StringUtils.cleanPath(file.getOriginalFilename());
+        this.type = file.getContentType();
+    }
 }
