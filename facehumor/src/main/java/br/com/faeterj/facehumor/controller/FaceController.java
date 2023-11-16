@@ -1,5 +1,6 @@
 package br.com.faeterj.facehumor.controller;
 
+import br.com.faeterj.facehumor.entity.Face;
 import br.com.faeterj.facehumor.entity.PhotoRegisterDTO;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
@@ -8,6 +9,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 
 @RestController
@@ -38,20 +41,21 @@ public class FaceController {
         return ResponseEntity.ok(faceservice.registerImage(file));
     }
     @GetMapping
-    public ResponseEntity list () {
-        return ResponseEntity.ok(faceservice.getAllFaces());
+    public List<Face> list() {
+        return faceservice.getAllFaces();
     }
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity delete (@PathVariable Long id){
+    public ResponseEntity<Face> delete (@PathVariable Long id){
         faceservice.deleteFace(id);
+
+        ResponseEntity.ok().build();
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
     @Transactional
-    public ResponseEntity delete () {
-        faceservice.deleteAllFaces();
-        return ResponseEntity.ok().build();
+    public List<Face> delete () {
+        return faceservice.deleteAllFaces();
     }
 }
