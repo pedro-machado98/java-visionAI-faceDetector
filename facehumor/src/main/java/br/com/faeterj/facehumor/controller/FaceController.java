@@ -23,7 +23,6 @@ public class FaceController {
         return ResponseEntity.ok(faceservice.registerURL(photoURL));
     }
     @PostMapping("/img")
-    @CrossOrigin()
     @Transactional
     public ResponseEntity registerByIMG (@RequestParam("file") MultipartFile file) throws Exception {
         if(file.isEmpty()){
