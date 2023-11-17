@@ -40,6 +40,10 @@ public class FaceController {
         System.out.println("Content type: "+file.getContentType());
         System.out.println("Bytes length: "+file.getSize());
         System.out.println("Resource multipart: "+file.getResource());
+        Face face = faceservice.registerImage(file);
+        if(face == null) {
+            return ResponseEntity.badRequest().build();
+        }
         return ResponseEntity.ok(faceservice.registerImage(file));
     }
     @GetMapping

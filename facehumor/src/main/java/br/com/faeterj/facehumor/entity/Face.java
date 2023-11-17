@@ -44,13 +44,23 @@ public class Face {
         this.surprise = annotation.getSurpriseLikelihood().toString().equals("VERY_LIKELY");
         this.sorrow = annotation.getSorrowLikelihood().toString().equals("VERY_LIKELY");
         this.headwear = annotation.getHeadwearLikelihood().toString().equals("VERY_LIKELY");
+
+
     }
 
     public Face getDataFromPhotoByURL(String photoURL) throws Exception {
-        return detectFaceAPI.detectFaceByURL(photoURL);
+        Face face = detectFaceAPI.detectFaceByURL(photoURL);
+        if (face.headwear|| face.sorrow|| face.surprise|| face.joy|| face.anger){
+            return face;
+        }
+        return new Face();
     }
 
     public Face getDataFromPhotoByIMG(ImageDB image) throws Exception {
-        return detectFaceAPI.detectFaceByIMG(image);
+        Face face = detectFaceAPI.detectFaceByIMG(image);
+        if (face.headwear|| face.sorrow|| face.surprise|| face.joy|| face.anger){
+            return face;
+        }
+        return new Face();
     }
 }

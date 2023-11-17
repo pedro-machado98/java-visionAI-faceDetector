@@ -20,17 +20,18 @@ public class FaceService {
     Face face = new Face();
 
     public Face registerImage (MultipartFile file) throws Exception {
-
-
-//        String fileName = StringUtils.cleanPath(file.getOriginalFilename());
-//        ImageDB imageDB = new ImageDB(fileName, file.getContentType(), file.getBytes());
-
-        return faceRepository.save(face.getDataFromPhotoByIMG(new ImageDB(file)));
-
-//        return faceRepository.save(face.getDataFromPhotoByIMG(imageDB));
+        Face faceNow = face.getDataFromPhotoByIMG(new ImageDB(file));
+        if(faceNow.getFaceImg() != null){
+            return faceRepository.save(faceNow);
+        }
+        return null;
     }
     public Face registerURL(FaceRegisterByURLDTO photoURL) throws Exception {
-        return faceRepository.save(face.getDataFromPhotoByURL(photoURL.photoURL()));
+        Face faceNow = face.getDataFromPhotoByURL(photoURL.photoURL());
+        if(faceNow.getPhotoURL() != null){
+            return faceRepository.save(faceNow);
+        }
+        return null;
     }
 
     public List<Face> getAllFaces(){
