@@ -52,8 +52,9 @@ public class FaceController {
     }
     @DeleteMapping("/{id}")
     @Transactional
-    public Face delete (@PathVariable("id") Long id) {
-        return faceservice.deleteFace(id);
+    public ResponseEntity delete (@PathVariable("id") Long id) {
+        faceservice.deleteFace(id);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
