@@ -2,12 +2,15 @@ package br.com.faeterj.facehumor.controller;
 
 import br.com.faeterj.facehumor.DTO.FaceRegisterByIMGDTO;
 import br.com.faeterj.facehumor.DTO.FaceRegisterByURLDTO;
+import br.com.faeterj.facehumor.entity.Face;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+
+import java.util.List;
 
 
 @RestController
@@ -45,8 +48,14 @@ public class FaceController {
     }
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity delete (@PathVariable Long id){
-        faceservice.deleteFace(id);
+    public Face delete (@PathVariable("id") Long id) {
+        return faceservice.deleteFace(id);
+    }
+
+    @DeleteMapping
+    @Transactional
+    public ResponseEntity delete () {
+        faceservice.deleteAllFaces();
         return ResponseEntity.ok().build();
     }
 }

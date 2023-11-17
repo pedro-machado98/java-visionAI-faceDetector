@@ -37,8 +37,11 @@ public class FaceService {
         return faceRepository.findAll();
     }
 
-    public void deleteFace(Long id) {
-        faceRepository.deleteById(id);
+    public Face deleteFace(Long id) {
+        return faceRepository.deleteFaceById(id);
     }
 
+    public void deleteAllFaces() {
+        faceRepository.deleteAll();
+    }
 }
