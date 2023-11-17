@@ -36,10 +36,8 @@ public class FaceService {
         faceRepository.deleteById(id);
     }
 
-    public List<Face> deleteAllFaces() {
-
+    public void deleteAllFaces() {
         faceRepository.deleteAll();
-        return getAllFaces();
     }
 
 }

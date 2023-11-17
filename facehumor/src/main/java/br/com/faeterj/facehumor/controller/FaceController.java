@@ -15,6 +15,7 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/faces")
+@CrossOrigin
 public class FaceController {
 
     @Autowired
@@ -27,6 +28,7 @@ public class FaceController {
     }
     @PostMapping("/img")
     @Transactional
+    @CrossOrigin
     public ResponseEntity registerByIMG (@RequestParam("file") MultipartFile file) throws Exception {
         if(file.isEmpty()){
             System.out.println("------------------------ARQUIVO ESTÁ VAZIO!! --------------------------------------");
@@ -46,16 +48,15 @@ public class FaceController {
     }
     @DeleteMapping("/{id}")
     @Transactional
-    public ResponseEntity<Face> delete (@PathVariable Long id){
+    public ResponseEntity delete (@PathVariable Long id){
         faceservice.deleteFace(id);
-
-        ResponseEntity.ok().build();
         return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
     @Transactional
-    public List<Face> delete () {
-        return faceservice.deleteAllFaces();
+    public ResponseEntity delete () {
+        faceservice.deleteAllFaces();
+        return ResponseEntity.ok().build();
     }
 }
