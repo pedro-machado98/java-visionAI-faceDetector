@@ -57,7 +57,7 @@ public class FaceController {
         return ResponseEntity.ok().build();
     }
 
-    @DeleteMapping
+    @DeleteMapping("/deleteAll")
     @Transactional
     public ResponseEntity delete () {
         faceservice.deleteAllFaces();
