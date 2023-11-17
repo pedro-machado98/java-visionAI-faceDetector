@@ -45,6 +45,4 @@ public class FaceService {
     public void deleteAllFaces() {
         faceRepository.deleteAll();
     }
-
->>>>>>> desenvolvimento
 }
