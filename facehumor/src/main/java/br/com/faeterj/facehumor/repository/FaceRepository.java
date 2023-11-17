@@ -9,6 +9,5 @@ import java.util.List;
 @Repository
 public interface FaceRepository extends JpaRepository<Face, Long> {
 
-    Face deleteFaceById(Long id);
 
 }

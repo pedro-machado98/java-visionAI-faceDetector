@@ -39,7 +39,7 @@ public class FaceService {
     }
 
     public void deleteFace(Long id) {
-        faceRepository.deleteFaceById(id);
+        faceRepository.deleteById(id);
     }
 
     public void deleteAllFaces() {
