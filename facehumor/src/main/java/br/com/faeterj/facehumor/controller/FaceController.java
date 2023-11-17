@@ -44,7 +44,7 @@ public class FaceController {
         if(face == null) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(faceservice.registerImage(file));
+        return ResponseEntity.ok(face);
     }
     @GetMapping
     public ResponseEntity list () {
