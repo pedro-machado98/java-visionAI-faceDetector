@@ -1,10 +1,10 @@
 package br.com.faeterj.facehumor.controller;
 
-import br.com.faeterj.facehumor.DTO.FaceRegisterByIMGDTO;
-import br.com.faeterj.facehumor.DTO.FaceRegisterByURLDTO;
 import br.com.faeterj.facehumor.entity.Face;
+import br.com.faeterj.facehumor.entity.PhotoRegisterDTO;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
@@ -15,23 +15,21 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/faces")
-@CrossOrigin()
+@CrossOrigin
 public class FaceController {
 
+    @Autowired
     private FaceService faceservice;
-
-    public FaceController (FaceService faceservice) {
-        this.faceservice = faceservice;
-    }
 
     @PostMapping("/url")
     @Transactional
-    public ResponseEntity registerByURL (@RequestBody @Valid FaceRegisterByURLDTO photoURL) throws Exception {
+    public ResponseEntity registerByURL (@RequestBody @Valid PhotoRegisterDTO photoURL) throws Exception {
         return ResponseEntity.ok(faceservice.registerURL(photoURL));
     }
     @PostMapping("/img")
     @Transactional
-    public ResponseEntity registerByIMG (@ModelAttribute("file") MultipartFile file) throws Exception {
+    @CrossOrigin
+    public ResponseEntity registerByIMG (@RequestParam("file") MultipartFile file) throws Exception {
         if(file.isEmpty()){
             System.out.println("------------------------ARQUIVO ESTÁ VAZIO!! --------------------------------------");
         }
@@ -40,20 +38,19 @@ public class FaceController {
         System.out.println("Content type: "+file.getContentType());
         System.out.println("Bytes length: "+file.getSize());
         System.out.println("Resource multipart: "+file.getResource());
-        Face face = faceservice.registerImage(file);
-        if(face == null) {
-            return ResponseEntity.badRequest().build();
-        }
+        System.out.println("toString: " + file.toString());
+        System.out.println("Classe: " + file.getClass());
         return ResponseEntity.ok(faceservice.registerImage(file));
     }
     @GetMapping
-    public ResponseEntity list () {
-        return ResponseEntity.ok(faceservice.getAllFaces());
+    public List<Face> list() {
+        return faceservice.getAllFaces();
     }
     @DeleteMapping("/{id}")
     @Transactional
-    public Face delete (@PathVariable("id") Long id) {
-        return faceservice.deleteFace(id);
+    public ResponseEntity delete (@PathVariable Long id){
+        faceservice.deleteFace(id);
+        return ResponseEntity.ok().build();
     }
 
     @DeleteMapping
