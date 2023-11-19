@@ -1,7 +1,6 @@
 package br.com.faeterj.facehumor.controller;
 
-import br.com.faeterj.facehumor.DTO.FaceRegisterByIMGDTO;
-import br.com.faeterj.facehumor.DTO.FaceRegisterByURLDTO;
+import br.com.faeterj.facehumor.entity.DTO.FaceRegisterByURLDTO;
 import br.com.faeterj.facehumor.entity.Face;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
@@ -9,8 +8,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-
-import java.util.List;
 
 
 @RestController
