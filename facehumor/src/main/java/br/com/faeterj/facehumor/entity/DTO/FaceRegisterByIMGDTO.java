@@ -1,4 +1,4 @@
-package br.com.faeterj.facehumor.DTO;
+package br.com.faeterj.facehumor.entity.DTO;
 
 import br.com.faeterj.facehumor.entity.ImageDB;
 import org.springframework.util.StringUtils;
