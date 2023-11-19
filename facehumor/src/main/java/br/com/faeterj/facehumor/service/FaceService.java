@@ -38,8 +38,8 @@ public class FaceService {
         return faceRepository.findAll();
     }
 
-    public Face deleteFace(Long id) {
-        return faceRepository.deleteFaceById(id);
+    public void deleteFace(Long id) {
+        faceRepository.deleteById(id);
     }
 
     public void deleteAllFaces() {
