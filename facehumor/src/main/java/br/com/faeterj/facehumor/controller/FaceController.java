@@ -2,6 +2,7 @@ package br.com.faeterj.facehumor.controller;
 
 import br.com.faeterj.facehumor.entity.DTO.FaceRegisterByURLDTO;
 import br.com.faeterj.facehumor.entity.Face;
+import br.com.faeterj.facehumor.entity.createdFaceResponse;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
@@ -23,28 +24,20 @@ public class FaceController {
 
     @PostMapping("/url")
     @Transactional
-    public ResponseEntity registerByURL (@RequestBody @Valid FaceRegisterByURLDTO photoURL) throws Exception {
+    public ResponseEntity registerByURL(@RequestBody @Valid FaceRegisterByURLDTO photoURL) throws Exception {
         return ResponseEntity.ok(faceservice.registerURL(photoURL));
     }
     @PostMapping("/img")
     @Transactional
-    public ResponseEntity registerByIMG (@ModelAttribute("file") MultipartFile file) throws Exception {
-        if(file.isEmpty()){
-            System.out.println("------------------------ARQUIVO ESTÁ VAZIO!! --------------------------------------");
-        }
-        System.out.println("Key name: "+file.getName());
-        System.out.println("File name: "+file.getOriginalFilename());
-        System.out.println("Content type: "+file.getContentType());
-        System.out.println("Bytes length: "+file.getSize());
-        System.out.println("Resource multipart: "+file.getResource());
+    public ResponseEntity registerByIMG(@ModelAttribute("file") MultipartFile file) throws Exception {
         Face face = faceservice.registerImage(file);
         if(face == null) {
             return ResponseEntity.badRequest().build();
         }
-        return ResponseEntity.ok(face);
+        return ResponseEntity.ok(new createdFaceResponse(face));
     }
     @GetMapping
-    public ResponseEntity list () {
+    public ResponseEntity list() {
         return ResponseEntity.ok(faceservice.getAllFaces());
     }
     @DeleteMapping("/{id}")
@@ -52,13 +45,13 @@ public class FaceController {
     public ResponseEntity<Face> delete (@PathVariable("id") Long id) {
 
         faceservice.deleteFace(id);
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 
     @DeleteMapping("/deleteAll")
     @Transactional
-    public ResponseEntity delete () {
+    public ResponseEntity delete() {
         faceservice.deleteAllFaces();
-        return ResponseEntity.ok().build();
+        return ResponseEntity.noContent().build();
     }
 }
