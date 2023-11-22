@@ -43,4 +43,8 @@ public class FaceService {
     public void deleteAllFaces() {
         faceRepository.deleteAll();
     }
+
+    public Face detailFace(Long id) {
+        return faceRepository.getReferenceById(id);
+    }
 }
