@@ -1,6 +1,6 @@
-package br.com.faeterj.facehumor.entity;
+package br.com.faeterj.facehumor.domain.image;
 
-import br.com.faeterj.facehumor.entity.DTO.FaceRegisterByIMGDTO;
+import br.com.faeterj.facehumor.domain.face.FaceRegisterByIMGDTO;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;

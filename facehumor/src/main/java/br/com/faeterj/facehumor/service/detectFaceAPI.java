@@ -1,7 +1,7 @@
 package br.com.faeterj.facehumor.service;
 
-import br.com.faeterj.facehumor.entity.Face;
-import br.com.faeterj.facehumor.entity.ImageDB;
+import br.com.faeterj.facehumor.domain.face.Face;
+import br.com.faeterj.facehumor.domain.image.ImageDB;
 import com.google.cloud.vision.v1.*;
 import com.google.protobuf.ByteString;
 import lombok.NoArgsConstructor;

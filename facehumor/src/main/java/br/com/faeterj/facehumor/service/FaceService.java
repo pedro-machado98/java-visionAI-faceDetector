@@ -1,9 +1,9 @@
 package br.com.faeterj.facehumor.service;
 
-import br.com.faeterj.facehumor.entity.Face;
+import br.com.faeterj.facehumor.domain.face.Face;
 import br.com.faeterj.facehumor.repository.FaceRepository;
-import br.com.faeterj.facehumor.entity.ImageDB;
-import br.com.faeterj.facehumor.entity.DTO.FaceRegisterByURLDTO;
+import br.com.faeterj.facehumor.domain.image.ImageDB;
+import br.com.faeterj.facehumor.domain.face.FaceRegisterByURLDTO;
 import org.springframework.stereotype.Service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.multipart.MultipartFile;

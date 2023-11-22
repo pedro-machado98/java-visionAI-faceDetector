@@ -1,7 +1,7 @@
-package br.com.faeterj.facehumor.entity.DTO;
+package br.com.faeterj.facehumor.domain.face;
 
-import br.com.faeterj.facehumor.entity.Face;
-import br.com.faeterj.facehumor.entity.ImageDB;
+import br.com.faeterj.facehumor.domain.face.Face;
+import br.com.faeterj.facehumor.domain.image.ImageDB;
 
 public record FaceResponseDTO(Boolean joy,
                               Boolean anger,

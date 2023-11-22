@@ -1,5 +1,6 @@
-package br.com.faeterj.facehumor.entity;
+package br.com.faeterj.facehumor.domain.face;
 
+import br.com.faeterj.facehumor.domain.image.ImageDB;
 import br.com.faeterj.facehumor.service.detectFaceAPI;
 import com.google.cloud.vision.v1.FaceAnnotation;
 import jakarta.persistence.*;

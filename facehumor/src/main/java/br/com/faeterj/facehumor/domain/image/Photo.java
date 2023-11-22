@@ -1,4 +1,4 @@
-package br.com.faeterj.facehumor.entity;
+package br.com.faeterj.facehumor.domain.image;
 
 import jakarta.persistence.Embeddable;
 

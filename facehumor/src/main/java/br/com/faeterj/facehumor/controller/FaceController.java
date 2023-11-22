@@ -1,8 +1,8 @@
 package br.com.faeterj.facehumor.controller;
 
-import br.com.faeterj.facehumor.entity.DTO.FaceRegisterByURLDTO;
-import br.com.faeterj.facehumor.entity.Face;
-import br.com.faeterj.facehumor.entity.DTO.FaceResponseDTO;
+import br.com.faeterj.facehumor.domain.face.FaceRegisterByURLDTO;
+import br.com.faeterj.facehumor.domain.face.Face;
+import br.com.faeterj.facehumor.domain.face.FaceResponseDTO;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;

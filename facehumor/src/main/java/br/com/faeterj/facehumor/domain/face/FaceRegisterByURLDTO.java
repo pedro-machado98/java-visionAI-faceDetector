@@ -1,4 +1,4 @@
-package br.com.faeterj.facehumor.entity.DTO;
+package br.com.faeterj.facehumor.domain.face;
 
 public record FaceRegisterByURLDTO(String photoURL) {
 }
