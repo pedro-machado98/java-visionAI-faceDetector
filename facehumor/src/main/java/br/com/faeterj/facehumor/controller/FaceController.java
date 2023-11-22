@@ -2,14 +2,13 @@ package br.com.faeterj.facehumor.controller;
 
 import br.com.faeterj.facehumor.entity.DTO.FaceRegisterByURLDTO;
 import br.com.faeterj.facehumor.entity.Face;
-import br.com.faeterj.facehumor.entity.DTO.createdFaceResponseDTO;
+import br.com.faeterj.facehumor.entity.DTO.FaceResponseDTO;
 import br.com.faeterj.facehumor.service.FaceService;
 import jakarta.validation.Valid;
 import org.springframework.http.ResponseEntity;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
-import org.springframework.web.util.UriComponents;
 import org.springframework.web.util.UriComponentsBuilder;
 
 import java.net.URI;
@@ -39,18 +38,18 @@ public class FaceController {
             return ResponseEntity.badRequest().build();
         }
         URI uri = uriBuilder.path("/img/{id}").buildAndExpand(face.getId()).toUri();
-        return ResponseEntity.created(uri).body(new createdFaceResponseDTO(face));
+        return ResponseEntity.created(uri).body(new FaceResponseDTO(face));
     }
 
     @GetMapping
     public ResponseEntity list() {
-        return ResponseEntity.ok(faceservice.getAllFaces());
+        return ResponseEntity.ok(faceservice.getAllFaces().stream().map(FaceResponseDTO::new));
     }
 
     @GetMapping("/{id}")
     public ResponseEntity detail(@PathVariable Long id) {
         Face face = faceservice.detailFace(id);
-        return ResponseEntity.ok(new createdFaceResponseDTO(face));
+        return ResponseEntity.ok(new FaceResponseDTO(face));
     }
 
     @DeleteMapping("/{id}")
