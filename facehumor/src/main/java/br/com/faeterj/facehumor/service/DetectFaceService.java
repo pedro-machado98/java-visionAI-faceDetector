@@ -10,7 +10,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @NoArgsConstructor
-public class detectFaceAPI {
+public class DetectFaceService {
 
     public static Face detectFaceByURL(String photoURL) throws Exception, IOException {
         List<AnnotateImageRequest> requests = new ArrayList<>();

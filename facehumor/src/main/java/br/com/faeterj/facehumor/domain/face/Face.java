@@ -1,7 +1,7 @@
 package br.com.faeterj.facehumor.domain.face;
 
 import br.com.faeterj.facehumor.domain.image.ImageDB;
-import br.com.faeterj.facehumor.service.detectFaceAPI;
+import br.com.faeterj.facehumor.service.DetectFaceService;
 import com.google.cloud.vision.v1.FaceAnnotation;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -50,7 +50,7 @@ public class Face {
     }
 
     public Face getDataFromPhotoByURL(String photoURL) throws Exception {
-        Face face = detectFaceAPI.detectFaceByURL(photoURL);
+        Face face = DetectFaceService.detectFaceByURL(photoURL);
         if (face.headwear|| face.sorrow|| face.surprise|| face.joy|| face.anger){
             return face;
         }
@@ -58,7 +58,7 @@ public class Face {
     }
 
     public Face getDataFromPhotoByIMG(ImageDB image) throws Exception {
-        Face face = detectFaceAPI.detectFaceByIMG(image);
+        Face face = DetectFaceService.detectFaceByIMG(image);
         if (face.headwear|| face.sorrow|| face.surprise|| face.joy|| face.anger){
             return face;
         }

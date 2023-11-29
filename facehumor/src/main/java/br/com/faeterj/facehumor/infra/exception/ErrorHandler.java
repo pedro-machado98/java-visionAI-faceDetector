@@ -1,4 +1,4 @@
-package br.com.faeterj.facehumor.infra;
+package br.com.faeterj.facehumor.infra.exception;
 
 import jakarta.persistence.EntityNotFoundException;
 import org.springframework.http.ResponseEntity;

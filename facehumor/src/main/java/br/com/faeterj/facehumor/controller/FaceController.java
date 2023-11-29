@@ -66,4 +66,5 @@ public class FaceController {
         faceservice.deleteAllFaces();
         return ResponseEntity.noContent().build();
     }
+
 }
